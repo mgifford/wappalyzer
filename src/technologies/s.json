@@ -2321,6 +2321,7 @@
     },
     "icon": "Shop Pay.svg",
     "js": {
+      "ShopPay": "",
       "ShopifyPay.apiHost": ""
     },
     "scriptSrc": [
@@ -2549,6 +2550,7 @@
       }
     },
     "headers": {
+      "powered-by": "Shopify",
       "x-shopid": "\\;confidence:50",
       "x-shopify-stage": ""
     },
@@ -2568,10 +2570,6 @@
       "recurring"
     ],
     "saas": true,
-    "scriptSrc": [
-      "sdks\\.shopifycdn\\.com",
-      "cdn\\.shopify\\.com"
-    ],
     "scripts": "shopifyTag",
     "url": "^https?//.+\\.myshopify\\.com",
     "website": "https://shopify.com",
@@ -2590,7 +2588,8 @@
       "freemium"
     ],
     "scriptSrc": [
-      "sdk\\. shopifycdn\\.com/buy-button/latest/"
+      "sdks\\.shopifycdn\\.com/buy-button/",
+      "sdks\\.shopifycdn\\.com/js-buy-sdk/"
     ],
     "website": "https://apps.shopify.com/buy-button"
   },
@@ -2644,6 +2643,17 @@
       "productreviews\\.shopifycdn\\.com"
     ],
     "website": "https://apps.shopify.com/product-reviews"
+  },
+  "Shopify Web Components": {
+    "cats": [
+      18
+    ],
+    "description": "Storefront Web Components let you bring Shopify-powered commerce capabilities to any website.",
+    "icon": "Shopify.svg",
+    "scriptSrc": [
+      "cdn\\.shopify\\.com/storefront/web-components\\.js"
+    ],
+    "website": "https://shopify.dev/docs/api/storefront-web-components"
   },
   "Shopistry": {
     "cats": [
@@ -3085,6 +3095,18 @@
     "saas": true,
     "scriptSrc": "\\.signifyd\\.com",
     "website": "https://www.signifyd.com"
+  },
+  "Silex": {
+    "cats": [
+      51
+    ],
+    "description": "Silex is a free and open source no-code website builder. It exports static websites and is also available as a desktop application.",
+    "icon": "Silex.png",
+    "meta": {
+      "generator": "^Silex v([\\d.]+)\\;version:\\1"
+    },
+    "oss": true,
+    "website": "https://www.silex.me"
   },
   "Silverstripe": {
     "cats": [
@@ -3986,6 +4008,19 @@
     ],
     "saas": true,
     "website": "https://sky-shop.pl"
+  },
+  "SkyCMS by Netkoncept": {
+    "cats": [
+      1
+    ],
+    "cookies": {
+      "skycms_LanguageId": "",
+      "skycms_PageCounter": ""
+    },
+    "description": "Polish SaaS content-management platform developed by NETKONCEPT, primarily used by public administration websites and Public Information Bulletin (BIP) portals.",
+    "icon": "SkyCMS_by_netkoncept.svg",
+    "saas": true,
+    "website": "https://www.netkoncept.com/86/63/technologia-skycms.html"
   },
   "SkyVerge": {
     "cats": [
@@ -6087,6 +6122,22 @@
     "implies": "Perl",
     "website": "https://metacpan.org/pod/Starlet"
   },
+  "Starlight": {
+    "cats": [
+      4,
+      57
+    ],
+    "description": "Starlight is a documentation website builder for the Astro framework.",
+    "icon": "Starlight.svg",
+    "meta": {
+      "generator": "^Starlight\\sv([\\d\\.]+)$\\;version:\\1"
+    },
+    "oss": true,
+    "requires": [
+      "Astro"
+    ],
+    "website": "https://starlight.astro.build/"
+  },
   "Statamic": {
     "cats": [
       1
@@ -6843,6 +6894,26 @@
     ],
     "saas": true,
     "website": "https://super.so"
+  },
+  "Super Page Cache": {
+    "cats": [
+      23,
+      87
+    ],
+    "description": "Super Page Cache is a static caching plugin for WordPress.",
+    "headers": {
+      "x-wp-cf-super-cache-active": "",
+      "x-wp-spc-disk-cache": ""
+    },
+    "icon": "super-page-cache.svg",
+    "pricing": [
+      "freemium",
+      "low",
+      "recurring"
+    ],
+    "requires": "WordPress",
+    "scriptSrc": "/wp-content/plugins/(?:wp-cloudflare-page-cache|wp-super-page-cache-pro)/",
+    "website": "https://themeisle.com/plugins/super-page-cache-pro/"
   },
   "Super Socializer": {
     "cats": [

@@ -646,6 +646,7 @@
     "description": "Judge.me is a reviews app that helps you collect and display product reviews and site reviews with photos, videos and Q&A.",
     "icon": "Judge.svg",
     "js": {
+      "jdgm": "",
       "judgeme": ""
     },
     "pricing": [
@@ -892,7 +893,7 @@
     "scriptSrc": [
       "jquery",
       "/jquery(?:-(\\d+\\.\\d+\\.\\d+))[/.-]\\;version:\\1",
-      "/(\\d+\\.\\d+\\.\\d+)/jquery[/.-][^u]\\;version:\\1"
+      "/(\\d+\\.\\d+\\.\\d+)/jquery(?:\\.slim)?(?:\\.min)?\\.js\\;version:\\1"
     ],
     "website": "https://jquery.com"
   },

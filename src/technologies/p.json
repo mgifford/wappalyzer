@@ -2082,6 +2082,18 @@
     "saas": true,
     "website": "https://www.useplaza.com"
   },
+  "PlentyONE Shop": {
+    "cats": [
+      6
+    ],
+    "description": "The official shop solution developed by PlentyONE. PlentyONE Shop is the new default Shop solution for PlentyONE online stores.",
+    "headers": {
+      "X-Plenty-Shop": "PlentyONE Shop"
+    },
+    "icon": "PlentyONE.svg",
+    "oss": true,
+    "website": "https://www.plentyone.com/product/online-shop"
+  },
   "Pleroma": {
     "cats": [
       2
@@ -2820,14 +2832,18 @@
     },
     "cpe": "cpe:2.3:a:prestashop:prestashop:*:*:*:*:*:*:*:*",
     "description": "PrestaShop is a freemium, open-source ecommerce solution, written in the PHP programming language with support for the MySQL database management system.",
-    "dom": "img[src*='/modules/prestablog/themes/'], img[data-src*='/modules/prestablog/themes/']",
+    "dom": [
+      "img[src*='/modules/prestablog/themes/'], img[data-src*='/modules/prestablog/themes/']",
+      "link[href*='/modules/ps_']"
+    ],
     "headers": {
       "Powered-By": "^Prestashop$"
     },
     "html": [
       "Powered by <a\\s+[^>]+>PrestaShop",
       "<!-- /Block [a-z ]+ module (?:HEADER|TOP)?\\s?-->",
-      "<!-- /Module Block [a-z ]+ -->"
+      "<!-- /Module Block [a-z ]+ -->",
+      "<!-- (?:/)?MODULE [^|]+ \\|\\| Presta-Module\\.com -->"
     ],
     "icon": "PrestaShop.svg",
     "implies": [
@@ -2845,6 +2861,7 @@
       "generator": "PrestaShop"
     },
     "oss": true,
+    "scriptSrc": "/modules/ps_[a-z]+/",
     "website": "https://www.prestashop.com"
   },
   "Pretty Damn Quick": {
@@ -3933,13 +3950,13 @@
     "cats": [
       6
     ],
-    "description": "The official template plugin developed by plentymarkets. plentyShop LTS is the default template for plentymarkets online stores.",
+    "description": "The plentyShop LTS plugin developed by PlentyONE. plentyShop LTS is the plugin based shop solution for PlentyONE. The predecessor to PlentyONE Shop",
     "headers": {
       "X-Plenty-Shop": "Ceres"
     },
     "icon": "plentyShop LTS.svg",
     "oss": true,
-    "website": "https://www.plentymarkets.com/product/modules/online-shop/"
+    "website": "https://www.plentyone.com/product/online-shop"
   },
   "plentymarkets": {
     "cats": [
@@ -3956,7 +3973,7 @@
     "scriptSrc": [
       "plenty\\.shop\\.(?:min\\.)?js"
     ],
-    "website": "https://www.plentymarkets.com/"
+    "website": "https://www.plentyone.com"
   },
   "prettyPhoto": {
     "cats": [

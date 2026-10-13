@@ -1,30 +1,102 @@
-name: Lint & Validate
+name: Lint, validate & Dependabot auto-merge
 
 on:
-  pull_request_target:
+  pull_request:
     branches:
       - main
-    paths-ignore:
-      - "src/technologies/*.json"
-      - "src/categories.json"
-      - "src/groups.json"
-      - "src/images/icons/**"
+  workflow_dispatch:
 
 jobs:
   lint:
-    name: Lint & Validate
-    runs-on: ubuntu-latest
+    name: Lint & validate
+    runs-on: ubuntu-slim
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 0
+        uses: actions/checkout@v7
 
       - name: Install dependencies
-        run: yarn install
+        run: npm install
 
-      - name: Lint and Validate
+      - name: Lint
+        run: npm run lint
+
+      - name: Validate
+        run: npm run validate
+
+      - name: Check path filters
+        uses: dorny/paths-filter@v4
+        id: filter
+        with:
+          filters: |
+            wpt:
+              - 'src/technologies/*.json'
+              - 'src/categories.json'
+              - 'src/groups.json'
+              - 'tests/*.js'
+              - '.github/workflows/wpt.yml'
+
+      - name: Parse WebPageTest URLs
+        if: steps.filter.outputs.wpt == 'true'
+        id: wpt-urls
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
         run: |
-          yarn run lint
-          yarn run validate
+          lines=()
+          while IFS= read -r line; do
+            lines+=("${line//[$'\r\n']}")
+          done <<< "$PR_BODY"
+
+          start_index=-1
+          for ((i=0; i<${#lines[@]}; i++)); do
+            if [[ "${lines[$i]}" == *"**Test websites**:"* ]]; then
+              start_index=$((i + 1))
+              break
+            fi
+          done
+
+          URLS=""
+          if [ $start_index -gt -1 ]; then
+            url_pattern="(https:\/\/[^[:space:]]+)"
+            for ((i=start_index; i<${#lines[@]}; i++)); do
+              if [[ ${lines[$i]} =~ $url_pattern ]]; then
+                URLS+="${BASH_REMATCH[1]} "
+              fi
+            done
+          fi
+          echo "urls=$URLS" >> $GITHUB_OUTPUT
+
+      - name: Save PR info
+        if: steps.filter.outputs.wpt == 'true'
+        run: |
+          mkdir -p pr-metadata
+          echo "${{ github.event.pull_request.number }}" > pr-metadata/pr_number
+          echo "${{ steps.wpt-urls.outputs.urls }}" > pr-metadata/urls
+
+      - name: Upload PR Metadata
+        if: steps.filter.outputs.wpt == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: pr-metadata
+          path: pr-metadata/
+
+  dependabot:
+    name: Dependabot auto-merge
+    runs-on: ubuntu-slim
+    needs: lint
+    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'HTTPArchive/wappalyzer'
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v3
+
+      - name: Enable auto-merge for Dependabot PRs
+        if: steps.metadata.outputs.update-type != 'version-update:semver-major'
+        run: gh pr merge --admin --squash "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GH_TOKEN: ${{github.token}}

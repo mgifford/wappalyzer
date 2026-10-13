@@ -611,6 +611,19 @@
     "scriptSrc": "cdn\\.tamara\\.co",
     "website": "https://tamara.co/"
   },
+  "TanStack Start": {
+    "cats": [
+      12,
+      18
+    ],
+    "description": "TanStack Start takes TanStack Router's typed route tree, URL state, loaders, and prefetching, then adds the server pieces: full-document SSR, streaming, server functions, server routes, and build output for the runtime you choose.",
+    "icon": "TanStack.svg",
+    "js": {
+      "__TSS_START_OPTIONS__": ""
+    },
+    "oss": true,
+    "website": "https://tanstack.com/start"
+  },
   "Tangled Network": {
     "cats": [
       88
@@ -2608,17 +2621,6 @@
     "scriptSrc": "/wp-content/plugins/google-language-translator/.+scripts\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?\\;version:\\1",
     "website": "https://gtranslate.io"
   },
-  "Transmart": {
-    "cats": [
-      99
-    ],
-    "description": "Transmart is a shipping company in Turkey.",
-    "requiresCategory": 6,
-    "text": [
-      "\\bTransmart\\b"
-    ],
-    "website": "https://transmartshipping.com"
-  },
   "Tray": {
     "cats": [
       6
@@ -2811,7 +2813,17 @@
       "x-yerdle-app-name": ""
     },
     "icon": "trove.png",
+    "js": {
+      "troveDataLayer": "",
+      "troveGlobal": ""
+    },
     "saas": true,
+    "scriptSrc": [
+      "recurate-slider\\.js",
+      "recurate-core\\.js",
+      "recurate-pdp\\.js",
+      "recurate-page\\.js"
+    ],
     "website": "https://trove.co",
     "xhr": "reware-production\\.yerdlesite\\.com"
   },
@@ -3058,6 +3070,18 @@
     "oss": true,
     "scriptSrc": "turolinks\\.js",
     "website": "https://github.com/turbolinks/turbolinks"
+  },
+  "Turbopack": {
+    "cats": [
+      47
+    ],
+    "description": "Turbopack is an open-source JavaScript module bundler.",
+    "icon": "Turbopack.svg",
+    "js": {
+      "TURBOPACK": ""
+    },
+    "oss": true,
+    "website": "https://nextjs.org/docs/app/api-reference/turbopack"
   },
   "TurfJS": {
     "cats": [

@@ -67,6 +67,20 @@
     "saas": true,
     "website": "https://www.kmk.net.tr"
   },
+  "KOMERO": {
+    "cats": [
+      6
+    ],
+    "description": "Multi-tenant SaaS e-commerce platform.",
+    "icon": "Komero.png",
+    "js": {
+      "KOMERO": ""
+    },
+    "meta": {
+      "generator": "^KOMERO"
+    },
+    "website": "https://www.komero.ge"
+  },
   "KPHP": {
     "cats": [
       27
@@ -1093,6 +1107,20 @@
     },
     "scriptSrc": "koken(?:\\.js\\?([\\d.]+)|/storage)\\;version:\\1",
     "website": "https://koken.me"
+  },
+  "Koko Analytics": {
+    "cats": [
+      10,
+      87
+    ],
+    "description": "Koko Analytics is a privacy-friendly analytics plugin for WordPress.",
+    "html": "<!--\\s*Koko Analytics v([\\d.]+)[^>]*-->\\;version:\\1",
+    "icon": "Koko Analytics.svg",
+    "js": {
+      "koko_analytics": ""
+    },
+    "requires": "WordPress",
+    "website": "https://www.kokoanalytics.com/"
   },
   "Komodo CMS": {
     "cats": [
